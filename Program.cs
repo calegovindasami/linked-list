@@ -3,13 +3,15 @@ using System;
 
 Linked_Lists.LinkedList<int> linkedList = new();
 
-linkedList.AddFirst(0);
-
-linkedList.AddNode(1);
+linkedList.AddFirst(1);
 
 linkedList.AddNode(2);
 
+linkedList.AddNode(3);
 
+linkedList.AddNode(4);
+
+
+linkedList.DeleteMiddle(2);
 linkedList.PrintList();
 
-linkedList.FindLengthRecursively(1, linkedList.Head);

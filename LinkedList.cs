@@ -133,6 +133,51 @@ namespace Linked_Lists
                 FindLengthRecursively(counter, node.Next);
             }
         }
+
+
+        //Got code from: https://www.geeksforgeeks.org/reverse-a-linked-list/
+        public void ReverseList()
+        {
+            Node nextNode = null!, previousNode = null!, currentNode = Head;
+
+            while (currentNode != null)
+            {
+                nextNode = currentNode.Next;
+                currentNode.Next = previousNode;
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+            Head = PreviousNode;
+        }
+
+        public void DeleteHead()
+        {
+            Node node = Head;
+            Head = node.Next;
+        }
+
+        public void DeleteTail()
+        {
+            Node currentNode = Head;
+
+            while (currentNode.Next.Next != null)
+            {
+                currentNode = currentNode.Next;
+            }
+
+            currentNode.Next = null!;
+        }
+
+        public void DeleteMiddle(int position)
+        {
+            Node currentNode = Head;
+            for (int i = 0; i < position - 1; i++)
+            {
+                currentNode = currentNode.Next;
+            }
+            currentNode.Next = currentNode.Next.Next;
+        }
+
     
     }
 
