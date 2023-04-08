@@ -8,7 +8,7 @@ namespace Linked_Lists
     public class LinkedList<T>
     {
         public Node Head = new();
-        public Node PreviousNode = new();
+        public Node Tail = new();
 
 
 
@@ -30,14 +30,14 @@ namespace Linked_Lists
         public void AddFirst(T data)
         {
             Head.Data = data;
-            PreviousNode = Head;
+            Tail = Head;
         }
 
         public void AddNode(T data)
         {
             Node currentNode = new(data);
-            PreviousNode.Next = currentNode;
-            PreviousNode = currentNode;
+            Tail.Next = currentNode;
+            Tail = currentNode;
         }
 
         public void PrintList()
@@ -147,7 +147,7 @@ namespace Linked_Lists
                 previousNode = currentNode;
                 currentNode = nextNode;
             }
-            Head = PreviousNode;
+            Head = Tail;
         }
 
         public void DeleteHead()
@@ -176,10 +176,10 @@ namespace Linked_Lists
                 currentNode = currentNode.Next;
             }
             currentNode.Next = currentNode.Next.Next;
+            
         }
 
     
     }
-
 
 }

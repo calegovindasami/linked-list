@@ -1,17 +1,13 @@
 ﻿using Linked_Lists;
 using System;
 
-Linked_Lists.LinkedList<int> linkedList = new();
+Linked_Lists.DoubleyLinkedList<string> dLinkedList = new();
 
-linkedList.AddFirst(1);
+dLinkedList.AddNode("Head");
+dLinkedList.AddNode("Two");
+dLinkedList.AddNode("Three");
+dLinkedList.PrintList();
+dLinkedList.InsertNode("New", 1);
+dLinkedList.PrintList();
 
-linkedList.AddNode(2);
-
-linkedList.AddNode(3);
-
-linkedList.AddNode(4);
-
-
-linkedList.DeleteMiddle(2);
-linkedList.PrintList();
 
