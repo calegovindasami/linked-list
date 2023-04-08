@@ -8,8 +8,8 @@ namespace Linked_Lists
     public class DoubleyLinkedList<T>
     {
 
-        public Node Head = new();
-        public Node Tail = new();
+        public Node Head = null!;
+        public Node Tail = null!;
         public int Size = 0;
 
         
@@ -30,8 +30,10 @@ namespace Linked_Lists
 
         public void AddNode(T data)
         {
-            if (Head.Data == null)
+            if (Head == null)
             {
+                Head = new();
+
                 Head.Data = data;
                 Tail = Head;
             }
@@ -86,12 +88,16 @@ namespace Linked_Lists
 
         public void InsertNode(T data, int index)
         {
-            Node node = Head;
             Node newNode = new(data);
             
             //To insert at head.
             if (index == 0)
             {
+                if (Head == null)
+                {
+                    AddNode(data);
+                    return;
+                }
                 InsertHead(newNode);
             }
 
@@ -147,21 +153,25 @@ namespace Linked_Lists
         public void DeleteNode(int index)
         {
             Node node = Head;
+            //Checks if index is within range.
             if (index > Size - 1 || index < 0)
             {
                 Console.WriteLine("Index out of range");
                 return;
             }
+            //Checks if index is the head.
             else if(index == 0)
             {
                 Head = Head.Next;
                 Head.Previous = null!;
             }
+            //Checks if index is the tail.
             else if (index == Size - 1)
             {
                 Tail = Tail.Previous;
                 Tail.Next = null!;
             }
+            //Checks if index is within the middle.
             else
             {
                 for (int i = 0; i < index; i++)
@@ -173,6 +183,24 @@ namespace Linked_Lists
                 node.Next.Previous = node.Previous;
             }
             Size--;
+        }
+
+        public void ReverseList()
+        {
+            Node node = Head;
+            Node tempHead = Head;
+
+            while (node != null)
+            {
+                Node tempNext = node.Next;
+                node.Next = node.Previous;
+                node.Previous = tempNext;
+                node = tempNext;
+            }
+
+            Head = Tail;
+            Tail = tempHead;
+        
         }
 
 
