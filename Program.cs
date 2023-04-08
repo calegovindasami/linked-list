@@ -3,11 +3,10 @@ using System;
 
 Linked_Lists.DoubleyLinkedList<string> dLinkedList = new();
 
-dLinkedList.AddNode("Head");
+dLinkedList.AddNode("One");
 dLinkedList.AddNode("Two");
 dLinkedList.AddNode("Three");
-dLinkedList.PrintList();
-dLinkedList.InsertNode("New", 1);
+
 dLinkedList.PrintList();
 
 

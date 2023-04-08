@@ -77,7 +77,7 @@ namespace Linked_Lists
                 node = node.Next;
                 index++;
             }
-
+            
             if (!bFound)
             {
                 Console.WriteLine($"{data} has NOT been found.");
@@ -135,13 +135,44 @@ namespace Linked_Lists
         {
             Node node = Head;
             for (int i = 0; i < index; i++)
+            {
+                node = node.Next;
+            }
+            
+            newNode.Previous = node.Previous;
+            node.Previous.Next = newNode;
+            newNode.Next = node;
+        }
+
+        public void DeleteNode(int index)
+        {
+            Node node = Head;
+            if (index > Size - 1 || index < 0)
+            {
+                Console.WriteLine("Index out of range");
+                return;
+            }
+            else if(index == 0)
+            {
+                Head = Head.Next;
+                Head.Previous = null!;
+            }
+            else if (index == Size - 1)
+            {
+                Tail = Tail.Previous;
+                Tail.Next = null!;
+            }
+            else
+            {
+                for (int i = 0; i < index; i++)
                 {
                     node = node.Next;
                 }
-            
-                newNode.Previous = node.Previous;
-                node.Previous.Next = newNode;
-                newNode.Next = node;
+
+                node.Previous.Next = node.Next;
+                node.Next.Previous = node.Previous;
+            }
+            Size--;
         }
 
 
